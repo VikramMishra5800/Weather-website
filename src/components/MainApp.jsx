@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import WeatherImage from "./Weather";
 import UserLoc from "./UserLoc";
+import WeatherImage from "./Weather";
 import "./css/styles.css";
 
 function MainApp(){
@@ -28,8 +28,10 @@ function MainApp(){
         fetchAPI();
     },[search.newCity , search.unit]);
     
+
     function handleChange(event){
         const name = event.target.name;
+    
         setSearch((prevValue)=>{
             return {
                 ...prevValue,
@@ -41,48 +43,54 @@ function MainApp(){
 
     return (
         <>
+        <div id="main-body">
             <UserLoc unit = {search.unit}/>
 
-            <div className="box">
-
-                <div className="inputData">
-                    <input type="search" name="newCity" value = {search.newCity} className="inputField" onChange={handleChange}/>
-                </div>
-
-                <div>
-                <select name="unit" onChange={handleChange}>
-                <option value="metric">Celsius</option>
-                <option value="imperial">Fahrenheit</option>
-                <option>Kelvin</option>
-                </select>
-                </div>
-
-                {!city ? (<p className="errorMsg">No such city found</p>): 
-                (
-                <div>
-                <div className="info">
-                    <h3 className="location">
-                    {search.newCity}
-                    </h3>
-
-                    <WeatherImage id = {weatherdetail.id}/>
-                    <h2>{weatherdetail.main}</h2>
-                    <h1 className="temp">
-                        {city.temp}
-                    </h1>
-                    <h3 className="tempmin_max">Min Temp: {city.temp_min} | Max Temp: {city.temp_max}</h3>
-                    <h4 id="humidity">Humidity: {city.humidity}%</h4>
-                    <h4 id="windSpeed">Wind Speed: {wind} meter/sec</h4>
-                    
-                </div>
-
-                <div className="wave -one"></div>
-                <div className="wave -two"></div>
-                <div className="wave -three"></div>
-                </div>
-                )}
-                
+            <div className="inputData">
+                <input className="inputField" type="search" name="newCity" value={search.newCity} onChange={handleChange} placeholder="Search City..." />
             </div>
+
+            <div className="d-flex justify-content-center align-items-center inputField">
+                <select name="unit" onChange={handleChange}>
+                    <option value="metric">Celsius</option>
+                    <option value="imperial">Fahrenheit</option>
+                    <option>Kelvin</option>
+                </select>
+            </div>
+
+            {!city ? (<h2 className="errorMsg">No such city found</h2>):
+            (
+                <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-lg-6 col-md-8 col-sm-6">
+                    <div className="card box">
+                        <div className="card-body">
+                        <h3 className="card-title">
+                            {search.newCity}
+                        </h3>
+                        <div style={{textAlign: "center"}}>
+                            <h1>
+                                {city.temp}
+                            </h1>
+                            <h5>{weatherdetail.main}</h5>
+                            <h6>Min Temp: {city.temp_min} | Max Temp: {city.temp_max}</h6>
+                        </div>
+                           
+                            <WeatherImage id={weatherdetail.id} />
+                            
+                            <div style={{marginTop: "80px"}}>
+                                <h5 >Humidity: {city.humidity}%</h5>
+                                <h5 >Wind Speed: {wind} m/s</h5>
+                            </div>
+                            
+                            <div className="wave -one"></div>
+                            <div className="wave -two"></div>
+                            <div className="wave -three"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            )}
+        </div>
         </>
     )
 }

@@ -1,48 +1,31 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Jost", sans-serif;
-}
-
 body {
     background: #f3f2ef;
     background-image: url("/src/components/clear-air-fly-fantastic-travel.jpg");
-    background-size: cover;
-    display: flex;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 100vh;
-    width: 100vw;
-    font-family: "Jost", sans-serif;
+} 
+
+#main-body{
+    margin: 50px auto;
 }
 
 .image{
   max-width: 30%;
   height: auto;
+  float: right;
 }
-
-html {
-    font-size: 100%;
-    height: 100%;
-}
-
-html {
-    background: #eee;
-}
-
 
 .box {
-    width: 80%;
-    height: 70%;
-    border-radius: 0.5rem;
+    
+    border-radius: 1rem;
     box-shadow: 0 0.2rem 3rem rgba(0, 0, 0, 0.2);
     background: #a5bbdd;
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
-    min-width: 30rem;
-    min-height: 37rem;
+    
 }
 
 .wave {
@@ -73,161 +56,20 @@ html {
     z-index: 3 !important;
 }
 
-.box::after {
-    content: "";
-    display: block;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 11;
-    transform: translate3d(0, 0, 0);
-}
-
-@keyframes drift {
-    from {
-        transform: rotate(0deg);
-    }
-    from {
-        transform: rotate(360deg);
-    }
-}
-
-.info {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 60vh;
-    z-index: 4;
-}
-
-#humidity{
-    align-items: left;
-}
-
-#windSpeed{
-    align-items: right;
-}
-
-.location {
-    /* margin-top: -5.5rem; */
-    text-align: center;
-    font-weight: 800;
-    font-size: 5rem;
-    text-transform: capitalize;
-}
-
-.fa-street-view {
-    animation: rotates 3s linear infinite ease;
-}
-
-@keyframes rotates {
-    from {
-        transform: translateX(-0.5rem);
-    }
-    from {
-        transform: translateX(0.5rem);
-    }
-}
-
-#date {
-    text-align: center;
-    margin-top: 0.5rem;
-    color: #57606f;
-    font-size: 1.2rem;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-.temp {
-    margin-top: 0.5rem;
-    text-align: center;
-    font-size: 3rem;
-}
-
-.tempmin_max {
-    text-align: center;
-    margin-top: 0.3rem;
-    /* font-weight: 300; */
-    font-size: 1.2rem;
-    color: #57606f;
-}
-
-#weathercon {
-    height: 55%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3em;
-}
-
-#weathercon .fas {
-    font-size: 6rem;
-    animation: fas-anime 3s linear infinite alternate;
-}
-
-@keyframes fas-anime {
-    from {
-        transform: scale(1.1);
-    }
-    to {
-        transform: scale(1.5)
-    }
-}
-
-@media (max-width: 600px) {
-    .box {
-        width: 90vw;
-        height: 80vh;
-    }
-
-    .wave {
-        top: 85%;
-    }
-
-    #weathercon {
-        font-size: 5em;
-    }
-
-    .info {
-        font-size: 1.5em;
-    }
-}
-
-@media (max-width: 500px) {
-    .box {
-        height: 80%;
-        width: 50%
-    }
-
-    .wave {
-        top: 115%;
-    }
-}
-
-body > span {
-    width: 100vw;
-    text-align: center;
-    color: grey;
-}
-
 .inputData {
-    width: 100%;
+    width: 50%;
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin:auto;
 }
 
 .inputField {
     width: 50%;
     margin: auto;
     border-radius: 5rem;
-    padding: 1rem 1rem;
+    padding: 0.5rem 0.5rem;
     outline: none;
     font-size: 1.5rem;
 }

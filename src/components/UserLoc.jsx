@@ -12,14 +12,17 @@ function UserLoc(props) {
             navigator.geolocation.getCurrentPosition((position) => {
             setCoord({lat: position.coords.latitude,long: position.coords.longitude}); 
             });
-
-            async function fetchAPI(){
-                const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.long}&units=${props.unit}&appid=${process.env.REACT_APP_MY_API_KEY}`;
-                const response = await fetch(url);
-                const resJSON = await response.json();
-                setUserLoc({locname: resJSON.name, loctemp: resJSON.main.temp, weatherType: resJSON.weather[0].main});
+            if(coord.lat && coord.long)
+            {
+                async function fetchAPI(){
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.long}&units=${props.unit}&appid=${process.env.REACT_APP_MY_API_KEY}`;
+                    const response = await fetch(url);
+                    const resJSON = await response.json();
+                    setUserLoc({locname: resJSON.name, loctemp: resJSON.main.temp, weatherType: resJSON.weather[0].main});
+                }
+                fetchAPI();
             }
-            fetchAPI();
+            
          
     },[coord.lat,coord.long,props.unit]);
 
